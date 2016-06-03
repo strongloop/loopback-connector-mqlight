@@ -7,24 +7,75 @@
 
 process.env.NODE_ENV = 'test';
 require('./init.js');
-// var assert = require('assert');
-var DataSource = require('loopback-datasource-juggler').DataSource;
+var loopback = require('loopback');
+var assert = require('assert');
 
 var config;
+var sender;
+var receiver;
 
-before(function() {
+var receiverModel;
+var senderModel;
+
+before(function(done) {
   config = global.config;
+
+  sender = loopback.createDataSource('mqlight',
+                {connector: require('../'), settings: config});
+
+  sender.on('connected', function(err) {
+    if (err) {
+      return done(new Error('Failed to connect to MQ Service to send'));
+    }
+
+    receiver = loopback.createDataSource('mqlight',
+                    {connector: require('../'), settings: config});
+
+    receiver.on('connected', function(err) {
+      if (err) {
+        return done(new Error('Failed to connect to MQ Service to receive'));
+      }
+
+      done();
+    });
+  });
+});
+
+after(function(done) {
+  receiver.disconnect();
+  done();
 });
 
 describe('testMessages', function() {
-  it('should send and receive messages', function(done) {
-    var ds = new DataSource(require('../'), config);
+  beforeEach(function(done) {
+    receiverModel = receiver.createModel('receiverModel', {});
 
-    var mq = ds.createModel('mqlight');
-    mq.on('started', function() {
+    receiverModel.subscribe('public', function(error) {
+      if (error) {
+        return done(error);
+      }
+
+      done();
+    });
+  });
+
+  afterEach(function(done) {
+    receiverModel.unsubscribe('public');
+    done();
+  });
+
+  it('should send and receive messages', function(done) {
+    senderModel = sender.createModel('senderModel', {});
+
+    receiverModel.find(0, function(data) {
+      assert.equal(data, 'Test Message');
       done();
     });
 
-    mq.start();
+    senderModel.create({topic: 'public', message: 'Test Message'},
+      function(error) {
+        assert(!error, 'Should not error on sending a message');
+        sender.disconnect();
+      });
   });
 });

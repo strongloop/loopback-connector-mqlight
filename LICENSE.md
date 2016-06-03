@@ -1,5 +1,5 @@
 Copyright (c) IBM Corp. 2015,2016. All Rights Reserved.
-Node module: loopback-connector-mqseries
+Node module: loopback-connector-mqlight
 This project is licensed under the Artistic License 2.0, full text below.
 
 --------

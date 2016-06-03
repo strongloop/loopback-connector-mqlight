@@ -1,5 +1,5 @@
 {
-  "name": "loopback-connector-mqseries",
+  "name": "loopback-connector-mqlight",
   "version": "1.0.14",
   "description": "LoopBack Connector for IBM MQSeries",
   "keywords": [
@@ -26,7 +26,7 @@
     "jscs": "^2.8.0",
     "eslint": "^1.10.3",
     "eslint-config-strongloop": "^1.0.2",
-    "loopback-datasource-juggler": "^2.43.0",
+    "loopback": "^2.28.0",
     "mocha": "^2.3.4",
     "rc": "^1.1.5",
     "should": "^8.1.1",
@@ -35,11 +35,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/strongloop/loopback-connector-mqseries.git"
+    "url": "git://github.com/strongloop/loopback-connector-mqlight.git"
   },
-  "homepage": "https://github.com/strongloop/loopback-connector-mqseries",
+  "homepage": "https://github.com/strongloop/loopback-connector-mqlight",
   "bugs": {
-    "url": "https://github.com/strongloop/loopback-connector-mqseries/issues"
+    "url": "https://github.com/strongloop/loopback-connector-mqlight/issues"
   },
   "license": "Artistic-2.0"
 }
