@@ -47,7 +47,7 @@ after(function(done) {
 });
 
 describe('testMessages', function() {
-  beforeEach(function(done) {
+  before(function(done) {
     receiverModel = receiver.createModel('receiverModel', {});
 
     receiverModel.subscribe('public', function(error) {
@@ -57,25 +57,53 @@ describe('testMessages', function() {
 
       done();
     });
+
+    senderModel = sender.createModel('senderModel', {});
   });
 
-  afterEach(function(done) {
+  after(function(done) {
     receiverModel.unsubscribe('public');
+    sender.disconnect();
     done();
   });
 
-  it('should send and receive messages', function(done) {
-    senderModel = sender.createModel('senderModel', {});
-
+  it('test create function', function(done) {
     receiverModel.find(0, function(data) {
-      assert.equal(data, 'Test Message');
+      assert.equal(data, 'Create Message');
       done();
     });
 
-    senderModel.create({topic: 'public', message: 'Test Message'},
+    senderModel.create({topic: 'public', message: 'Create Message'},
       function(error) {
         assert(!error, 'Should not error on sending a message');
-        sender.disconnect();
+        done(error);
       });
   });
+
+  it('test update function', function(done) {
+    receiverModel.find(0, function(data) {
+      assert.equal(data, 'Update Message');
+      done();
+    });
+
+    senderModel.update({topic: 'public', message: 'Update Message'},
+      function(error) {
+        assert(!error, 'Should not error on sending a message');
+        done(error);
+      });
+  });
+
+  it('test delete function', function(done) {
+    receiverModel.find(0, function(data) {
+      assert.equal(data, 'Delete Message');
+      done();
+    });
+
+    senderModel.delete({topic: 'public', message: 'Delete Message'},
+      function(error) {
+        assert(!error, 'Should not error on sending a message');
+        done(error);
+      });
+  });
+
 });
