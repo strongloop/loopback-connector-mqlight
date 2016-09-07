@@ -1,3 +1,7 @@
+**PLEASE CREATE ISSUES AT https://github.com/strongloop/loopback/issues**
+
+---
+
 # loopback-connector-mqlight
 Loopback connector for MQ Light
 
