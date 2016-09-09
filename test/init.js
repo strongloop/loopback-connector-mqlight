@@ -8,8 +8,13 @@ module.exports = require('should');
 var config = {
   user: process.env.MQ_USERNAME,
   password: process.env.MQ_PASSWORD,
-  service: process.env.MQ_CONNECTION_URI,
+  service: process.env.MQ_CONNECTION_URI || 'amqp://localhost:5672',
 };
+// allow disabled username/password authentication
+if (!config.user)
+  delete config.user;
+if (!config.password)
+  delete config.password;
 
 global.config = config;
 
