@@ -1,7 +1,7 @@
 {
   "name": "loopback-connector-mqlight",
   "version": "1.0.0",
-  "description": "LoopBack Connector for IBM MQSeries",
+  "description": "LoopBack connector for IBM MQSeries",
   "keywords": [
     "IBM",
     "StrongLoop",
@@ -12,9 +12,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint ./ && jscs ./",
-    "lint": "eslint ./ && jscs ./",
-    "test": "mocha --timeout 10000"
+    "lint": "eslint .",
+    "test": "mocha",
+    "posttest": "eslint . --ignore-path .gitignore"
   },
   "dependencies": {
     "async": "^1.5.0",
@@ -23,7 +23,6 @@
     "mqlight": "^1.0.0"
   },
   "devDependencies": {
-    "jscs": "^2.8.0",
     "eslint": "^1.10.3",
     "eslint-config-strongloop": "^1.0.2",
     "loopback": "^2.28.0",
