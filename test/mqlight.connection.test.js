@@ -7,7 +7,8 @@
 process.env.NODE_ENV = 'test';
 require('./init.js');
 var assert = require('assert');
-var loopback = require('loopback');
+var connector = require('..');
+var DataSource = require('loopback-datasource-juggler').DataSource;
 
 var config;
 
@@ -16,18 +17,9 @@ before(function() {
 });
 
 describe('testConnection', function() {
-  it('should pass with valid settings', function(done) {
-    var ds = loopback.createDataSource(
-      {connector: require('../'), settings: config});
-
-    ds.on('connected', function(err) {
-      assert(!err, 'Should connect without err.');
-
-      ds.on('disconnected', function() {
-        done();
-      });
-
-      ds.disconnect();
-    });
+  it('should pass with valid settings', function() {
+    var ds = new DataSource(connector, config);
+    assert(ds.connected);
+    ds.disconnect();
   });
 });
