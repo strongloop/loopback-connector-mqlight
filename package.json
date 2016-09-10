@@ -12,9 +12,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --ignore-path .gitignore",
     "test": "mocha",
-    "posttest": "eslint . --ignore-path .gitignore"
+    "posttest": "npm run lint"
   },
   "dependencies": {
     "async": "^1.5.0",
