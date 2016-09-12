@@ -12,7 +12,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ignore-path .gitignore",
+    "lint": "eslint .",
     "test": "mocha",
     "posttest": "npm run lint"
   },
