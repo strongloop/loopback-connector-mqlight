@@ -3,81 +3,55 @@
 // This file is licensed under the Artistic License 2.0.
 // License text available at https://opensource.org/licenses/Artistic-2.0
 
+'use strict';
+
 /* eslint-env node, mocha */
 
 process.env.NODE_ENV = 'test';
 require('./init.js');
-var loopback = require('loopback');
+var connector = require('..');
+var DataSource = require('loopback-datasource-juggler').DataSource;
 var assert = require('assert');
 
-var config;
-var sender;
-var receiver;
+var config, sender, receiver, receiverModel, senderModel;
 
-var receiverModel;
-var senderModel;
-
-before(function(done) {
+before(function() {
   config = global.config;
 
-  sender = loopback.createDataSource('mqlight',
-                {connector: require('../'), settings: config});
-
-  sender.on('connected', function(err) {
-    if (err) {
-      return done(new Error('Failed to connect to MQ Service to send'));
-    }
-
-    receiver = loopback.createDataSource('mqlight',
-                    {connector: require('../'), settings: config});
-
-    receiver.on('connected', function(err) {
-      if (err) {
-        return done(new Error('Failed to connect to MQ Service to receive'));
-      }
-
-      done();
-    });
-  });
+  sender = new DataSource(connector, config);
+  receiver = new DataSource(connector, config);
 });
 
-after(function(done) {
+after(function() {
   receiver.disconnect();
-  done();
 });
 
 describe('testMessages', function() {
   before(function(done) {
     receiverModel = receiver.createModel('receiverModel', {});
-
-    receiverModel.subscribe('public', function(error) {
-      if (error) {
-        return done(error);
-      }
-
+    receiverModel.subscribe('public', function(err) {
+      if (err) return done(err);
       done();
     });
-
     senderModel = sender.createModel('senderModel', {});
   });
 
-  after(function(done) {
+  after(function() {
     receiverModel.unsubscribe('public');
     sender.disconnect();
-    done();
   });
 
   it('test create function', function(done) {
-    receiverModel.find(0, function(data) {
-      assert.equal(data, 'Create Message');
-      done();
-    });
-
-    senderModel.create({topic: 'public', message: 'Create Message'},
-      function(error) {
-        assert(!error, 'Should not error on sending a message');
-        done(error);
+    senderModel.create({
+      topic: 'public',
+      message: 'Create Message',
+    }, function(err) {
+      if (err) return done(err);
+      receiverModel.find(0, function(data) {
+        assert.equal(data, 'Create Message');
+        done();
       });
+    });
   });
 
   it('test update function', function(done) {
@@ -105,5 +79,4 @@ describe('testMessages', function() {
         done(error);
       });
   });
-
 });
