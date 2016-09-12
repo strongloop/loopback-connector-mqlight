@@ -24,8 +24,8 @@
   },
   "devDependencies": {
     "bluebird": "^2.9.9",
-    "eslint": "^1.10.3",
-    "eslint-config-strongloop": "^1.0.2",
+    "eslint": "^2.13.1",
+    "eslint-config-loopback": "^4.0.0",
     "loopback-datasource-juggler": "^3.0.0-alpha.8",
     "mocha": "^2.3.4",
     "rc": "^1.1.5",
