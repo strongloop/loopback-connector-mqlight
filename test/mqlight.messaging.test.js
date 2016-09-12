@@ -3,6 +3,8 @@
 // This file is licensed under the Artistic License 2.0.
 // License text available at https://opensource.org/licenses/Artistic-2.0
 
+'use strict';
+
 /* eslint-env node, mocha */
 
 process.env.NODE_ENV = 'test';
@@ -11,12 +13,7 @@ var connector = require('..');
 var DataSource = require('loopback-datasource-juggler').DataSource;
 var assert = require('assert');
 
-var config;
-var sender;
-var receiver;
-
-var receiverModel;
-var senderModel;
+var config, sender, receiver, receiverModel, senderModel;
 
 before(function() {
   config = global.config;
@@ -82,5 +79,4 @@ describe('testMessages', function() {
         done(error);
       });
   });
-
 });
