@@ -21,7 +21,6 @@
     "debug": "^2.2.0",
     "loopback-connector": "^2.3.0",
     "mqlight": "^1.0.0",
-    "path": "^0.12.7",
     "strong-globalize": "^2.7.0"
   },
   "devDependencies": {
