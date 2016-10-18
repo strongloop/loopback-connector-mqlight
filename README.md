@@ -55,3 +55,22 @@ username       | String  | MQ Light service username
 password       | String  | MQ Light service password associated with the username above
 
 Examples can be found in the test directory.
+
+## Testing
+
+Start a local MQ Light server:
+
+```shell
+$ $MQLIGHT_HOME/mqlight-start
+```
+
+> You can download a free copy at https://developer.ibm.com/messaging/mq-light/.
+
+Then run the tests:
+
+```shell
+$ npm test
+```
+
+> We run tests against the latest developer builds. Early access builds are not
+> guaranteed to pass (use at your own risk).
