@@ -5,8 +5,13 @@
 
 'use strict';
 
-module.exports = require('should');
+// assertion lib
+var chai = require('chai');
+var dirtyChai = require('dirty-chai');
+chai.use(dirtyChai);
+global.expect = chai.expect;
 
+// database configs
 var config = {
   user: process.env.MQ_USERNAME,
   password: process.env.MQ_PASSWORD,
@@ -17,12 +22,4 @@ if (!config.user)
   delete config.user;
 if (!config.password)
   delete config.password;
-
 global.config = config;
-
-// global.getDataSource = global.getSchema = function(options) {
-//   var db = new DataSource(require('../'), config);
-//   return db;
-// };
-
-global.sinon = require('sinon');
