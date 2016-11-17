@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/strongloop/loopback-connector-mqlight",
   "bugs": {
-    "url": "https://github.com/strongloop/loopback/issues"
+    "url": "https://github.com/strongloop/loopback-connector-mqlight/issues"
   },
   "license": "Artistic-2.0"
 }
