@@ -1,6 +1,9 @@
 {
   "name": "loopback-connector-mqlight",
   "version": "3.0.0-alpha.1",
+  "engines": {
+    "node": ">=4"
+  },
   "description": "LoopBack connector for IBM MQSeries",
   "keywords": [
     "IBM",
