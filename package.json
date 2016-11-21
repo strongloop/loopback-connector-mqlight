@@ -1,6 +1,9 @@
 {
   "name": "loopback-connector-mqlight",
   "version": "1.0.1",
+  "publishConfig": {
+    "tag": "lts"
+  },
   "description": "LoopBack connector for IBM MQSeries",
   "keywords": [
     "IBM",
@@ -29,7 +32,7 @@
     "dirty-chai": "^1.2.2",
     "eslint": "^2.13.1",
     "eslint-config-loopback": "^4.0.0",
-    "loopback-datasource-juggler": "^3.0.0",
+    "loopback-datasource-juggler": "^2.53.0",
     "mocha": "^2.3.4",
     "rc": "^1.1.5"
   },
