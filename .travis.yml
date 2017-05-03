@@ -4,7 +4,7 @@ services:
 node_js:
   - '4'
 env:
-  - MQ_USERNAME=guest MQ_PASSWORD=guest
+  - MQ_USERNAME=guest MQ_PASSWORD=guest MQ_CONNECTION_URI="amqp://127.0.0.1:5672/"
 addons:
   apt:
     sources:
