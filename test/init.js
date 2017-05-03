@@ -17,7 +17,7 @@ var config = {
   password: process.env.MQ_PASSWORD,
   service: process.env.MQ_CONNECTION_URI || 'amqp://localhost:5672',
   host: 'localhost',
-  port: '5672',
+  port: '5671',
 };
 
 console.error('config:', config);
