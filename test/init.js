@@ -16,7 +16,11 @@ var config = {
   user: process.env.MQ_USERNAME,
   password: process.env.MQ_PASSWORD,
   service: process.env.MQ_CONNECTION_URI || 'amqp://localhost:5672',
+  host: 'localhost',
+  port: '5672',
 };
+
+console.error('config:', config);
 // allow disabled username/password authentication
 if (!config.user)
   delete config.user;
