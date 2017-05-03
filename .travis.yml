@@ -3,7 +3,11 @@ services:
   - rabbitmq
 node_js:
   - '4'
-  - '6'
 env:
-  - MQ_USERNAME=guest
-  - MQ_PASSWORD=guest
+  - MQ_USERNAME=guest MQ_PASSWORD=guest
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
