@@ -1,0 +1,9 @@
+language: node_js
+services:
+  - rabbitmq
+node_js:
+  - '4'
+  - '6'
+env:
+  - MQ_USERNAME=guest
+  - MQ_PASSWORD=guest
