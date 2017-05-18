@@ -8,6 +8,8 @@ var connector = require('../..');
 var DataSource = require('loopback-datasource-juggler').DataSource;
 var describe = require('../describe');
 
+var timeout = 5000;
+
 describe('messaging', function() {
   var sender, receiver, senderModel, receiverModel;
   beforeEach(setupSender);
@@ -27,25 +29,29 @@ describe('messaging', function() {
   });
 
   it('updates a message', function(done) {
-    senderModel.update({topic: 'public', message: 'An update message'},
-    function(err) {
-      if (err) return done(err);
-      receiverModel.find(0, function(msg) {
-        expect(msg).to.equal('An update message');
-        done();
-      });
-    });
+    setTimeout(function() {
+      senderModel.update({topic: 'public', message: 'An update message'},
+        function(err) {
+          if (err) return done(err);
+          receiverModel.find(0, function(msg) {
+            expect(msg).to.equal('An update message');
+            done();
+          });
+        });
+    }, timeout);
   });
 
   it('deletes a message', function(done) {
-    senderModel.delete({topic: 'public', message: 'A delete message'},
-    function(err) {
-      if (err) return done(err);
-      receiverModel.find(0, function(msg) {
-        expect(msg).to.equal('A delete message');
-        done();
-      });
-    });
+    setTimeout(function() {
+      senderModel.delete({topic: 'public', message: 'A delete message'},
+        function(err) {
+          if (err) return done(err);
+          receiverModel.find(0, function(msg) {
+            expect(msg).to.equal('A delete message');
+            done();
+          });
+        });
+    }, timeout);
   });
 
   function setupSender(done) {
