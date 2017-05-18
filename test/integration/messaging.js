@@ -8,6 +8,8 @@ var connector = require('../..');
 var DataSource = require('loopback-datasource-juggler').DataSource;
 var describe = require('../describe');
 
+var timeout = 5000;
+
 describe('messaging', function() {
   var sender, receiver, senderModel, receiverModel;
   beforeEach(setupSender);
@@ -36,7 +38,7 @@ describe('messaging', function() {
           done();
         });
       });
-    }, 5000);
+    }, timeout);
   });
 
   it('deletes a message', function(done) {
@@ -49,7 +51,7 @@ describe('messaging', function() {
           done();
         });
       });
-    }, 5000);
+    }, timeout);
   });
 
   function setupSender(done) {
