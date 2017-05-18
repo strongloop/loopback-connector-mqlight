@@ -13,10 +13,13 @@ global.expect = chai.expect;
 
 // database configs
 var config = {
-  user: process.env.MQ_USERNAME,
-  password: process.env.MQ_PASSWORD,
-  service: process.env.MQ_CONNECTION_URI || 'amqp://localhost:5672',
+  user: process.env.MQLIGHT_USER,
+  password: process.env.MQLIGHT_PASSWORD,
+  host: process.env.MQLIGHT_HOST,
+  port: process.env.MQLIGHT_PORT,
+  service: process.env.MQLIGHT_CONNECTION_URI || 'amqp://' + process.env.MQLIGHT_USER + ':' + process.env.MQLIGHT_PASSWORD + '@' + 'localhost:5672',
 };
+
 // allow disabled username/password authentication
 if (!config.user)
   delete config.user;
