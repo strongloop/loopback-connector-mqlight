@@ -1,4 +1,46 @@
-2016-10-20, Version 1.0.1
+2018-05-16, Version 3.0.0
+=========================
+
+ * chore: update CODEOWNERS (Diana Lau)
+
+ * chore: update dependencies (Diana Lau)
+
+ * Update LICENSE.md (Diana Lau)
+
+ * Add stalebot configuration (Kevin Delisle)
+
+ * Update Issue and PR Templates (#39) (Sakib Hasan)
+
+ * Add CODEOWNER file (Diana Lau)
+
+ * Replicate new issue_template from loopback (Siddhi Pai)
+
+ * Replicate issue_template from loopback repo (Siddhi Pai)
+
+ * Fix CI - add timeout for test (Diana Lau)
+
+ * Update paid support URL (Siddhi Pai)
+
+ * Update es translation file (Candy)
+
+ * Start 3.x + drop support for Node v0.10/v0.12 (siddhipai)
+
+ * Drop support for Node v0.10 and v0.12 (Siddhi Pai)
+
+ * Start the development of the next major version (Siddhi Pai)
+
+ * put issues tab back (siddhipai)
+
+ * Fix issues redirection in package.json (Siddhi Pai)
+
+ * Remove issues warning from README.md (Siddhi Pai)
+
+ * Add translation files (Candy)
+
+ * Update doc links in README, etc (crandmck)
+
+
+2016-10-19, Version 1.0.1
 =========================
 
  * Refactor and enable tests (#22) (Simon Ho)
