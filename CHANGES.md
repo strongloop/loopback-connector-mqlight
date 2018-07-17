@@ -1,3 +1,11 @@
+2018-07-17, Version 3.1.0
+=========================
+
+ * chore: update dependencies (Diana Lau)
+
+ * [WebFM] cs/pl/ru translation (candytangnb)
+
+
 2018-05-16, Version 3.0.0
 =========================
 
